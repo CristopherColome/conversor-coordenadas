@@ -1,0 +1,4 @@
+datum:
+  WSG84:
+    semiejeMayor: 6378137.000
+    semiejeMenor: 6356752.314
