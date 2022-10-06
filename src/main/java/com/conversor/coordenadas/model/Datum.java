@@ -6,6 +6,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Map;
 
 import static com.conversor.coordenadas.ApplicationUtil.objectMapperYAML;
@@ -46,7 +47,24 @@ public class Datum {
 
     public enum Sistema {
 
-        WSG84;
+        WSG84("WGS 84");
+
+        private final String label;
+
+        Sistema(String label){
+            this.label = label;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+
+        public static Sistema valorOf(String label){
+            return Arrays.stream(values())
+                    .filter(x -> x.label.equals(label))
+                    .findFirst()
+                    .orElse(null);
+        }
 
         public Datum load(){
 

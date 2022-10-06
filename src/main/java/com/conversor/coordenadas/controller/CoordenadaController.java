@@ -6,7 +6,6 @@ import com.conversor.coordenadas.model.SistemaGeodesico;
 
 public class CoordenadaController {
 
-
     private SistemaGeodesico coordenadaGeodesica;
 
     private SistemaGeocentrico coordenadaGeocentrica;
@@ -18,46 +17,6 @@ public class CoordenadaController {
 
     public CoordenadaController(SistemaGeocentrico coordenadaGeocentrica) {
         this.coordenadaGeocentrica = coordenadaGeocentrica;
-    }
-
-
-    public static void main(String[] args) throws InterruptedException {
-
-
-           /*     coordenadaGeodesica.setLatitud(-12.0646728442914);
-        coordenadaGeodesica.setLongitud(-77.0375725237244);
-        coordenadaGeodesica.setAltura(161.0);*/
-
-        SistemaGeodesico coordenadaGeodesica = new SistemaGeodesico();
-        coordenadaGeodesica.setDatum(Datum.Sistema.WSG84.load());
-        coordenadaGeodesica.setLatitud(-22.1681111111);
-        coordenadaGeodesica.setLongitud(-60.2563888889);
-        coordenadaGeodesica.setAltura(1250.0);
-
-        System.out.println("IN");
-        System.out.println(coordenadaGeodesica);
-
-        CoordenadaController cdes = new CoordenadaController(
-                coordenadaGeodesica
-        );
-        SistemaGeocentrico sistemaGeocentrico = cdes.geodesicaToGeocentrica();
-        sistemaGeocentrico.setDatum(Datum.Sistema.WSG84.load());
-    /*          2932387.001
-                -5131941.357
-                -2392133.991
-                */
-        System.out.println(sistemaGeocentrico);
-
-        CoordenadaController ccen = new CoordenadaController(
-                sistemaGeocentrico
-        );
-
-        SistemaGeodesico sistemaGeodesico = ccen.geocentricoToGeodesico();
-
-
-        System.out.println("OUT");
-        System.out.println(sistemaGeodesico);
-
     }
 
     public SistemaGeocentrico geodesicaToGeocentrica() {
@@ -123,7 +82,7 @@ public class CoordenadaController {
 
         sistemaGeodesico.setLongitud(
                 (
-                        Math.atan(coordenadaGeocentrica.getY()/coordenadaGeocentrica.getX()) * 180
+                        Math.atan(coordenadaGeocentrica.getY() / coordenadaGeocentrica.getX()) * 180
                 ) / Math.PI
         );
 

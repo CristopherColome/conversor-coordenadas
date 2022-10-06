@@ -14,7 +14,7 @@ public class Application {
         BasicConfigurator.configure();
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         EventQueue.invokeLater(() -> new MainView().setVisible(true));
     }
 
